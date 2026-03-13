@@ -121,6 +121,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 el.innerHTML = t[key];
             }
         });
+
+        document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+            const key = el.getAttribute('data-i18n-placeholder');
+            if (t[key]) {
+                el.setAttribute('placeholder', t[key]);
+            }
+        });
     }
 
     // ============================================================
@@ -244,17 +251,52 @@ document.addEventListener('DOMContentLoaded', () => {
     // CONTACT FORM (basic handling)
     // ============================================================
     const contactForm = document.getElementById('contact-form');
+    const formStatus = document.getElementById('form-status');
+
+    function setFormStatus(type, message) {
+        if (!formStatus) return;
+        formStatus.textContent = message;
+        formStatus.classList.remove('success', 'error', 'sending');
+        if (type) formStatus.classList.add(type);
+    }
+
     if (contactForm) {
-        contactForm.addEventListener('submit', function (e) {
-            // If using Formspree, the form will submit normally.
-            // If you want custom handling, uncomment below:
-            
-            // e.preventDefault();
-            // const formData = new FormData(this);
-            // alert(currentLang === 'es' 
-            //     ? '¡Mensaje enviado! Gracias por contactarme.' 
-            //     : 'Message sent! Thanks for contacting me.');
-            // this.reset();
+        contactForm.addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            const t = translations[currentLang];
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const defaultBtnHTML = submitBtn ? submitBtn.innerHTML : '';
+
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = t.form_sending || 'Sending...';
+            }
+            setFormStatus('sending', '');
+
+            try {
+                const response = await fetch(this.action, {
+                    method: 'POST',
+                    body: new FormData(this),
+                    headers: {
+                        Accept: 'application/json'
+                    }
+                });
+
+                if (!response.ok) {
+                    throw new Error('Request failed');
+                }
+
+                this.reset();
+                setFormStatus('success', t.form_success || 'Message sent successfully.');
+            } catch (error) {
+                setFormStatus('error', t.form_error || 'Could not send message. Please try again.');
+            } finally {
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = t.form_send || defaultBtnHTML;
+                }
+            }
         });
     }
 
@@ -263,6 +305,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // ============================================================
     createParticles();
     renderProjects();
+    applyTranslations();
+    updateLangButton();
     observeRevealElements();
     updateActiveNavLink();
 
