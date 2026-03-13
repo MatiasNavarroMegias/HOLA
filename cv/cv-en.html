@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV — Matias Megias Navarro</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        /* ---- Reset & Base ---- */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            font-size: 8.2pt;
+            line-height: 1.4;
+            background: #0a0a1a;
+            color: #e8e8e8;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+
+        /* ---- Page ---- */
+        .cv-page {
+            width: 210mm;
+            height: 297mm;
+            background: #0a0a1a;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        .cv-content {
+            height: 297mm;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 28px 32px 22px;
+        }
+
+        /* ---- Spacers ---- */
+        .spacer-md { height: 16px; }
+        .spacer-sm { height: 12px; }
+
+        /* ---- Header ---- */
+        .cv-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1.5px solid rgba(184,184,255,0.25);
+            padding-bottom: 12px;
+        }
+
+        .header-left .name {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 17pt;
+            font-weight: 700;
+            background: linear-gradient(135deg, #b8b8ff, #ffb3c6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 1px;
+        }
+
+        .header-left .role {
+            font-size: 9pt;
+            font-weight: 500;
+            color: #b8e0d2;
+            margin-top: 2px;
+            letter-spacing: 0.5px;
+        }
+
+        .contact-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px 14px;
+            margin-top: 6px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 7.2pt;
+            color: #a0a0b8;
+        }
+
+        .contact-item i {
+            color: #b8b8ff;
+            font-size: 7.5pt;
+        }
+
+        .contact-item a {
+            color: #a0a0b8;
+            text-decoration: none;
+        }
+
+        .header-logo {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 22pt;
+            font-weight: 700;
+            color: rgba(184,184,255,0.15);
+            letter-spacing: 2px;
+            user-select: none;
+        }
+
+        /* ---- Section title ---- */
+        .section-title {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 7.8pt;
+            font-weight: 700;
+            color: #b8b8ff;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border-bottom: 1px solid rgba(184,184,255,0.2);
+            padding-bottom: 3px;
+            margin-bottom: 7px;
+        }
+
+        /* ---- Profile ---- */
+        .profile-text {
+            font-size: 7.8pt;
+            color: #c0c0d8;
+            line-height: 1.5;
+        }
+
+        /* ---- Skills grid ---- */
+        .skills-grid-2x2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px 14px;
+        }
+
+        .skill-group-title {
+            font-size: 7pt;
+            font-weight: 600;
+            color: #ffb3c6;
+            margin-bottom: 3px;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3px;
+        }
+
+        .tag {
+            background: rgba(184,184,255,0.1);
+            color: #b8b8ff;
+            border: 1px solid rgba(184,184,255,0.2);
+            border-radius: 3px;
+            padding: 1.5px 5px;
+            font-size: 6.6pt;
+            font-weight: 500;
+        }
+
+        .tag.highlight {
+            background: rgba(184,184,255,0.2);
+            color: #d0d0ff;
+            border-color: rgba(184,184,255,0.4);
+            font-weight: 600;
+        }
+
+        /* ---- Two column layout ---- */
+        .two-col {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+        }
+
+        .two-col > div {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* ---- Job / Project card ---- */
+        .entry-title {
+            font-size: 8pt;
+            font-weight: 600;
+            color: #e8e8e8;
+        }
+
+        .entry-meta {
+            font-size: 7pt;
+            color: #b8e0d2;
+            margin-top: 1px;
+        }
+
+        .entry-location {
+            font-size: 6.8pt;
+            color: #6a6a8a;
+            margin-bottom: 4px;
+        }
+
+        .entry-bullets {
+            padding-left: 12px;
+            margin-top: 3px;
+        }
+
+        .entry-bullets li {
+            font-size: 7.2pt;
+            color: #a0a0b8;
+            margin-bottom: 2px;
+        }
+
+        /* ---- Education card ---- */
+        .edu-card {
+            background: rgba(26,26,62,0.6);
+            border: 1px solid rgba(184,184,255,0.12);
+            border-radius: 6px;
+            padding: 6px 9px;
+        }
+
+        .edu-card + .edu-card { margin-top: 5px; }
+
+        .edu-degree {
+            font-size: 7.8pt;
+            font-weight: 600;
+            color: #e8e8e8;
+        }
+
+        .edu-institution {
+            font-size: 7pt;
+            color: #b8b8ff;
+            margin-top: 1px;
+        }
+
+        .edu-period {
+            font-size: 6.8pt;
+            color: #6a6a8a;
+            margin-top: 1px;
+        }
+
+        /* ---- Project card ---- */
+        .project-card {
+            background: rgba(26,26,62,0.5);
+            border: 1px solid rgba(184,184,255,0.12);
+            border-radius: 6px;
+            padding: 6px 9px;
+        }
+
+        .project-card + .project-card { margin-top: 5px; }
+
+        .project-name {
+            font-size: 7.8pt;
+            font-weight: 600;
+            color: #e8e8e8;
+        }
+
+        .project-status {
+            font-size: 6.6pt;
+            color: #b8e0d2;
+            margin-left: 5px;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2px;
+            margin-top: 3px;
+        }
+
+        /* ---- Certifications ---- */
+        .cert-group-title {
+            font-size: 7.5pt;
+            font-weight: 600;
+            color: #e8e8e8;
+        }
+
+        .cert-sub {
+            font-size: 6.8pt;
+            color: #a0a0b8;
+            padding-left: 10px;
+        }
+
+        .cert-sub li { margin-bottom: 1px; }
+
+        .cert-block + .cert-block { margin-top: 6px; }
+
+        /* ---- Soft skills ---- */
+        .soft-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3px;
+        }
+
+        .soft-pill {
+            background: rgba(255,179,198,0.12);
+            color: #ffb3c6;
+            border: 1px solid rgba(255,179,198,0.25);
+            border-radius: 20px;
+            padding: 1.5px 7px;
+            font-size: 6.6pt;
+            font-weight: 500;
+        }
+
+        /* ---- Bottom row ---- */
+        .bottom-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 10px;
+            background: rgba(26,26,62,0.4);
+            border: 1px solid rgba(184,184,255,0.1);
+            border-radius: 8px;
+            padding: 8px 12px;
+        }
+
+        .bottom-col-title {
+            font-size: 7pt;
+            font-weight: 700;
+            color: #b8b8ff;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            margin-bottom: 4px;
+        }
+
+        .bottom-item {
+            font-size: 7pt;
+            color: #a0a0b8;
+            margin-bottom: 2px;
+        }
+
+        .bottom-item strong {
+            color: #e8e8e8;
+        }
+
+        /* ---- Footer ---- */
+        .cv-footer {
+            text-align: center;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 6.5pt;
+            color: rgba(184,184,255,0.3);
+            letter-spacing: 1px;
+            border-top: 1px solid rgba(184,184,255,0.1);
+            padding-top: 6px;
+        }
+
+        /* ---- Print ---- */
+        @media print {
+            body { background: #0a0a1a; }
+            .cv-page {
+                width: 210mm;
+                height: 297mm;
+                margin: 0;
+            }
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="cv-page">
+  <div class="cv-content">
+
+    <!-- HEADER -->
+    <header class="cv-header">
+      <div class="header-left">
+        <div class="name">MATIAS MEGIAS NAVARRO</div>
+        <div class="role">Full Stack Developer</div>
+        <div class="contact-row">
+          <span class="contact-item"><i class="fas fa-map-marker-alt"></i> Ramos Mejía, Buenos Aires, Argentina</span>
+          <span class="contact-item"><i class="fas fa-phone"></i> +54 11 6157-9969</span>
+          <span class="contact-item"><i class="fas fa-envelope"></i> matiasmegiasnavarro05@gmail.com</span>
+          <span class="contact-item"><i class="fab fa-linkedin"></i><a href="https://linkedin.com/in/matias-megías-navarro" target="_blank">linkedin.com/in/matias-megías-navarro</a></span>
+          <span class="contact-item"><i class="fab fa-github"></i><a href="https://github.com/MatiasNavarroMegias" target="_blank">github.com/MatiasNavarroMegias</a></span>
+        </div>
+      </div>
+      <div class="header-logo">&lt;MM/&gt;</div>
+    </header>
+
+    <div class="spacer-sm"></div>
+
+    <!-- PROFESSIONAL SUMMARY -->
+    <section>
+      <div class="section-title"><i class="fas fa-user"></i> &nbsp;Professional Summary</div>
+      <p class="profile-text">
+        Full Stack Developer and Computer Engineering student at Universidad de Morón. Hands-on experience building web applications with JavaScript, React, Next.js, Node.js, Python, Java, C++ and SQL. Solid understanding of software architecture, frontend and backend development, relational databases, Docker containers and version control with Git. Currently developing a SaaS platform applying design patterns, REST APIs, data modelling and UML technical documentation. Analytical mindset with a strong ability to solve problems and build scalable technological solutions.
+      </p>
+    </section>
+
+    <div class="spacer-sm"></div>
+
+    <!-- TECHNICAL SKILLS -->
+    <section>
+      <div class="section-title"><i class="fas fa-code"></i> &nbsp;Technical Skills</div>
+      <div class="skills-grid-2x2">
+        <div>
+          <div class="skill-group-title">Languages</div>
+          <div class="skill-tags">
+            <span class="tag highlight">JavaScript</span>
+            <span class="tag">C++</span>
+            <span class="tag">Java</span>
+            <span class="tag">Python</span>
+            <span class="tag highlight">HTML5</span>
+            <span class="tag highlight">CSS3</span>
+            <span class="tag">SQL</span>
+          </div>
+        </div>
+        <div>
+          <div class="skill-group-title">Frameworks &amp; Libraries</div>
+          <div class="skill-tags">
+            <span class="tag highlight">React</span>
+            <span class="tag highlight">Next.js</span>
+            <span class="tag highlight">Node.js</span>
+          </div>
+        </div>
+        <div>
+          <div class="skill-group-title">Tools &amp; DevOps</div>
+          <div class="skill-tags">
+            <span class="tag highlight">Git</span>
+            <span class="tag highlight">GitHub</span>
+            <span class="tag highlight">Docker</span>
+            <span class="tag">VS Code</span>
+            <span class="tag">IntelliJ IDEA</span>
+          </div>
+        </div>
+        <div>
+          <div class="skill-group-title">Development &amp; Data</div>
+          <div class="skill-tags">
+            <span class="tag">REST API</span>
+            <span class="tag">SaaS</span>
+            <span class="tag">Responsive Design</span>
+            <span class="tag">UML</span>
+            <span class="tag">MER/DER</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="spacer-md"></div>
+
+    <!-- TWO-COLUMN MAIN BODY -->
+    <div class="two-col">
+      <!-- LEFT COLUMN -->
+      <div>
+        <!-- WORK EXPERIENCE -->
+        <section>
+          <div class="section-title"><i class="fas fa-briefcase"></i> &nbsp;Work Experience</div>
+          <div class="entry-title">Administrative Assistant — Gestoría Sypien</div>
+          <div class="entry-meta">Mar 2025 – Present</div>
+          <div class="entry-location"><i class="fas fa-map-marker-alt" style="font-size:6pt;color:#6a6a8a;"></i> Buenos Aires, Argentina</div>
+          <ul class="entry-bullets">
+            <li>Management and organisation of administrative records and files.</li>
+            <li>Client liaison and follow-up, coordinating procedures and enquiries.</li>
+            <li>Support in data processing and record-keeping in internal systems.</li>
+            <li>Collaboration in optimising administrative workflows.</li>
+            <li>Effective communication with external bodies to handle official processes.</li>
+          </ul>
+        </section>
+
+        <div class="spacer-md"></div>
+
+        <!-- EDUCATION -->
+        <section>
+          <div class="section-title"><i class="fas fa-graduation-cap"></i> &nbsp;Education</div>
+          <div class="edu-card">
+            <div class="edu-degree">Computer Engineering</div>
+            <div class="edu-institution">Universidad de Morón</div>
+            <div class="edu-period">2024 – Present</div>
+          </div>
+          <div class="edu-card">
+            <div class="edu-degree">HS Diploma — Social Sciences</div>
+            <div class="edu-institution">Colegio Del Parque</div>
+            <div class="edu-period">2018 – 2023</div>
+          </div>
+        </section>
+      </div>
+
+      <!-- RIGHT COLUMN -->
+      <div>
+        <!-- PROJECTS -->
+        <section>
+          <div class="section-title"><i class="fas fa-rocket"></i> &nbsp;Projects</div>
+          <div class="project-card">
+            <div>
+              <span class="project-name">SaaS Platform</span>
+              <span class="project-status">in development</span>
+            </div>
+            <div class="project-tags">
+              <span class="tag highlight">React</span>
+              <span class="tag highlight">Next.js</span>
+              <span class="tag highlight">Node.js</span>
+              <span class="tag">SQL</span>
+              <span class="tag highlight">Docker</span>
+            </div>
+          </div>
+          <div class="project-card">
+            <div>
+              <span class="project-name">Personal Web Portfolio</span>
+            </div>
+            <div class="project-tags">
+              <span class="tag highlight">HTML5</span>
+              <span class="tag highlight">CSS3</span>
+              <span class="tag highlight">JavaScript</span>
+            </div>
+          </div>
+        </section>
+
+        <div class="spacer-md"></div>
+
+        <!-- CERTIFICATIONS -->
+        <section>
+          <div class="section-title"><i class="fas fa-certificate"></i> &nbsp;Certifications</div>
+          <div class="cert-block">
+            <div class="cert-group-title">Generative AI — IBM/Coursera</div>
+            <ul class="cert-sub">
+              <li>Generative AI Fundamentals</li>
+              <li>Generative AI: Prompt Engineering</li>
+              <li>Fundamentals of Language Models</li>
+              <li>Generative AI: Impact, Considerations and Ethical Use</li>
+              <li>Generative AI in Action</li>
+            </ul>
+          </div>
+          <div class="cert-block">
+            <div class="cert-group-title">Programming &amp; Office Tools</div>
+            <ul class="cert-sub">
+              <li>Introduction to Python — Univ. of Pennsylvania / Coursera</li>
+              <li>Microsoft Office — Intermediate Level</li>
+            </ul>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <div class="spacer-sm"></div>
+
+    <!-- SOFT SKILLS -->
+    <section>
+      <div class="section-title"><i class="fas fa-star"></i> &nbsp;Soft Skills</div>
+      <div class="soft-skills">
+        <span class="soft-pill">Analytical Thinking</span>
+        <span class="soft-pill">Problem Solving</span>
+        <span class="soft-pill">Organisation</span>
+        <span class="soft-pill">Effective Communication</span>
+        <span class="soft-pill">Fast Learner</span>
+        <span class="soft-pill">Teamwork</span>
+        <span class="soft-pill">Proactivity</span>
+        <span class="soft-pill">Attention to Detail</span>
+        <span class="soft-pill">Adaptability</span>
+      </div>
+    </section>
+
+    <div class="spacer-sm"></div>
+
+    <!-- BOTTOM ROW -->
+    <div class="bottom-row">
+      <div>
+        <div class="bottom-col-title">Languages</div>
+        <div class="bottom-item"><strong>Spanish</strong> — Native</div>
+        <div class="bottom-item"><strong>English</strong> — Intermediate</div>
+      </div>
+      <div>
+        <div class="bottom-col-title">Availability</div>
+        <div class="bottom-item">Part-time morning shift</div>
+        <div class="bottom-item">Zona Oeste &amp; CABA</div>
+      </div>
+      <div>
+        <div class="bottom-col-title">AI &amp; Extras</div>
+        <div class="bottom-item">Generative AI &amp; Prompt Eng.</div>
+        <div class="bottom-item">Microsoft Office Interm.</div>
+      </div>
+      <div>
+        <div class="bottom-col-title">Interests</div>
+        <div class="bottom-item">Software Architecture</div>
+        <div class="bottom-item">SaaS &amp; Cloud Computing</div>
+      </div>
+    </div>
+
+    <div class="spacer-sm"></div>
+
+    <!-- FOOTER -->
+    <footer class="cv-footer">
+      MATIAS MEGIAS NAVARRO &nbsp;—&nbsp; FULL STACK DEVELOPER &nbsp;—&nbsp; 2026
+    </footer>
+
+  </div>
+</div>
+</body>
+</html>

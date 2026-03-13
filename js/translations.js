@@ -29,7 +29,8 @@ const translations = {
         about_stat_certs: "Certificaciones",
         about_stat_uni_val: "UM",
         about_stat_uni: "Universidad",
-        about_download_cv: '<i class="fas fa-download"></i> Descargar CV',
+        about_download_cv_es: '<i class="fas fa-download"></i> CV Español',
+        about_download_cv_en: '<i class="fas fa-download"></i> CV English',
 
         // Skills
         skills_title: '<span class="title-decorator">&lt;</span> Habilidades <span class="title-decorator">/&gt;</span>',
@@ -94,7 +95,8 @@ const translations = {
         about_stat_certs: "Certifications",
         about_stat_uni_val: "UM",
         about_stat_uni: "University",
-        about_download_cv: '<i class="fas fa-download"></i> Download CV',
+        about_download_cv_es: '<i class="fas fa-download"></i> CV Español',
+        about_download_cv_en: '<i class="fas fa-download"></i> CV English',
 
         // Skills
         skills_title: '<span class="title-decorator">&lt;</span> Skills <span class="title-decorator">/&gt;</span>',
