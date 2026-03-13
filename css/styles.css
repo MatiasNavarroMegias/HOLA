@@ -529,6 +529,12 @@ img {
     margin-bottom: 32px;
 }
 
+.cv-download-btns {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
 .stat-card {
     background: var(--bg-glass);
     border: 1px solid var(--border-color);
